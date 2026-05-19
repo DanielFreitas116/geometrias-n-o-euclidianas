@@ -14,8 +14,12 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="background-orbit orbit-a"></div>
+  <div class="background-orbit orbit-b"></div>
+  <div class="background-grid"></div>
+
   <div class="shell">
-    <header class="hero">
+    <header class="hero" id="topo">
       <div class="hero-copy">
         <p class="eyebrow">Matemática Aplicada</p>
         <h1>Geometrias Não Euclidianas</h1>
@@ -24,247 +28,360 @@
           de ser apenas euclidiana e passou a admitir modelos coerentes com
           curvatura positiva e negativa.
         </p>
-      </div>
-      <aside class="hero-panel">
-        <h2>Ideia central</h2>
-        <p>
-          A geometria não euclidiana nasce quando o quinto postulado de Euclides é
-          substituído. A partir daí surgem teorias consistentes em que o espaço pode
-          ter curvatura e as retas são substituídas por geodésicas.
-        </p>
-        <div class="hero-points">
-          <p><strong>Esférica:</strong> não existem paralelas.</p>
-          <p><strong>Euclidiana:</strong> existe exatamente uma paralela.</p>
-          <p><strong>Hiperbólica:</strong> existem infinitas paralelas.</p>
+
+        <div class="hero-actions">
+          <a class="button button-solid" href="#autores">Explorar autores</a>
+          <a class="button button-ghost" href="#exercicio">Ir para o simulador</a>
         </div>
+
+        <div class="hero-facts">
+          <div class="fact-card">
+            <p class="meta">Esférica</p>
+            <p>0 paralelas</p>
+          </div>
+          <div class="fact-card">
+            <p class="meta">Euclidiana</p>
+            <p>1 paralela</p>
+          </div>
+          <div class="fact-card">
+            <p class="meta">Hiperbólica</p>
+            <p>Infinitas paralelas</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-visual">
+        <svg viewBox="0 0 520 520" aria-label="Composição geométrica ilustrativa">
+          <defs>
+            <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0d7a6f" stop-opacity="0.95"></stop>
+              <stop offset="100%" stop-color="#0f4f89" stop-opacity="0.9"></stop>
+            </linearGradient>
+          </defs>
+          <circle cx="260" cy="260" r="180" class="hero-ring"></circle>
+          <circle cx="260" cy="260" r="128" class="hero-ring soft"></circle>
+          <polygon points="260,88 399,170 399,350 260,432 121,350 121,170" class="hero-hex"></polygon>
+          <path d="M 110 304 Q 260 104 410 304" class="hero-arc"></path>
+          <path d="M 146 342 Q 260 198 374 342" class="hero-arc fine"></path>
+          <line x1="121" y1="170" x2="399" y2="350" class="hero-line"></line>
+          <line x1="399" y1="170" x2="121" y2="350" class="hero-line"></line>
+          <circle cx="260" cy="260" r="20" class="hero-node"></circle>
+          <circle cx="121" cy="170" r="9" class="hero-point"></circle>
+          <circle cx="399" cy="170" r="9" class="hero-point"></circle>
+          <circle cx="121" cy="350" r="9" class="hero-point"></circle>
+          <circle cx="399" cy="350" r="9" class="hero-point"></circle>
+          <text x="72" y="165" class="hero-text">curvatura</text>
+          <text x="332" y="438" class="hero-text">geodésicas</text>
+        </svg>
       </aside>
     </header>
 
-    <nav class="tabs" aria-label="Abas do conteúdo">
-      <button class="tab active" data-tab="autores" type="button">Autores</button>
-      <button class="tab" data-tab="tema" type="button">Tema</button>
-      <button class="tab" data-tab="prova" type="button">Prova e propriedades</button>
-      <button class="tab" data-tab="aplicacoes" type="button">Aplicações</button>
-      <button class="tab" data-tab="exercicio" type="button">Exercício interativo</button>
-      <button class="tab" data-tab="bibliografia" type="button">Bibliografia</button>
+    <nav class="scroll-nav" aria-label="Navegação principal">
+      <a class="nav-link active" href="#autores">Autores</a>
+      <a class="nav-link" href="#tema">Tema</a>
+      <a class="nav-link" href="#prova">Prova e propriedades</a>
+      <a class="nav-link" href="#aplicacoes">Aplicações</a>
+      <a class="nav-link" href="#exercicio">Exercício interativo</a>
+      <a class="nav-link" href="#bibliografia">Bibliografia</a>
     </nav>
 
-    <main class="tab-panels">
-      <section class="panel active" id="autores">
+    <main class="page-sections">
+      <section class="content-section reveal" id="autores">
         <div class="section-head">
           <p class="kicker">Percurso histórico</p>
           <h2>Quem abriu caminho para as geometrias não euclidianas</h2>
         </div>
+
         <div class="grid grid-two">
           <article class="card">
             <h3>Euclides</h3>
             <p>
               Euclides sistematizou a geometria clássica nos
-              <em>Elementos</em>. O seu quinto postulado, relativo às paralelas,
-              tornou-se durante séculos o ponto mais discutido da teoria, porque era
-              menos intuitivo e mais complexo do que os restantes axiomas.
+              <em>Elementos</em>. O quinto postulado, relativo às paralelas,
+              tornou-se o ponto mais discutido da teoria, precisamente por parecer
+              menos imediato do que os restantes axiomas.
             </p>
           </article>
+
           <article class="card">
             <h3>Saccheri e Lambert</h3>
             <p>
-              Giovanni Girolamo Saccheri e Johann Heinrich Lambert tentaram provar o
-              quinto postulado por redução ao absurdo. Não alcançaram essa prova,
-              mas os seus estudos ajudaram a revelar que a negação do postulado
-              conduzia a estruturas geométricas ricas e coerentes.
+              Saccheri e Lambert tentaram provar o quinto postulado por redução ao
+              absurdo. O seu fracasso teve enorme valor matemático: mostrou que a
+              negação do postulado merecia ser estudada seriamente.
             </p>
           </article>
+
           <article class="card">
             <h3>Gauss</h3>
             <p>
-              Carl Friedrich Gauss compreendeu em privado a possibilidade de uma
-              geometria não euclidiana consistente, mas não publicou uma teoria
-              completa. O seu trabalho teve, ainda assim, grande influência na
-              aceitação posterior do tema.
+              Gauss percebeu a possibilidade de uma geometria não euclidiana
+              consistente, embora não a tenha publicado de forma sistemática.
+              A sua influência foi decisiva na maturação intelectual do tema.
             </p>
           </article>
+
           <article class="card">
             <h3>Lobachevsky e János Bolyai</h3>
             <p>
-              Nikolai Lobachevsky e János Bolyai foram os pioneiros da geometria
-              hiperbólica, desenvolvida independentemente no século XIX. Mostraram
-              que é possível construir uma geometria coerente onde, por um ponto
-              exterior a uma reta, passam infinitas paralelas.
+              Desenvolveram independentemente a geometria hiperbólica, mostrando que
+              por um ponto exterior a uma reta podem passar infinitas paralelas sem
+              quebrar a coerência lógica da teoria.
             </p>
           </article>
+
           <article class="card">
             <h3>Riemann</h3>
             <p>
-              Bernhard Riemann generalizou profundamente a noção de espaço e de
-              curvatura. A sua abordagem tornou possível estudar variedades curvas e
-              abriu o caminho para a geometria diferencial moderna e para a física
-              matemática do século XX.
+              Riemann generalizou a noção de espaço, introduzindo variedades e
+              curvatura intrínseca. Com ele, a geometria passou a poder descrever
+              espaços muito mais gerais do que o plano clássico.
             </p>
           </article>
+
           <article class="card highlight">
             <h3>Beltrami, Klein e Poincaré</h3>
             <p>
-              Eugenio Beltrami construiu modelos que mostraram a consistência
-              relativa da geometria hiperbólica. Felix Klein e Henri Poincaré
-              aprofundaram esses modelos, tornando a nova geometria mais clara,
-              visualizável e operacional.
+              Estes matemáticos deram modelos concretos à geometria hiperbólica.
+              Com isso, a discussão deixou de ser apenas filosófica e passou a ter
+              representação visual e força lógica dentro da própria geometria.
             </p>
           </article>
         </div>
-      </section>
 
-      <section class="panel" id="tema">
-        <div class="section-head">
-          <p class="kicker">Conceito</p>
-          <h2>O que é a geometria não euclidiana</h2>
-        </div>
-        <div class="stack">
-          <article class="card">
-            <p>
-              Chama-se <strong>geometria não euclidiana</strong> ao conjunto de
-              geometrias obtidas quando se altera o postulado das paralelas de
-              Euclides. Em vez de assumir que por um ponto exterior a uma reta passa
-              uma única paralela, admite-se outra hipótese, produzindo novas teorias
-              coerentes.
-            </p>
-            <p>
-              As duas famílias clássicas são:
-            </p>
-            <ul class="clean-list">
-              <li><strong>Geometria esférica:</strong> superfície de curvatura positiva; as geodésicas são círculos máximos e não existem paralelas.</li>
-              <li><strong>Geometria hiperbólica:</strong> espaço de curvatura negativa; por um ponto exterior passam infinitas geodésicas que não intersectam a geodésica dada.</li>
-            </ul>
-          </article>
-
-          <div class="grid grid-two">
-            <article class="card">
-              <h3>Ideia de geodésica</h3>
-              <p>
-                Nas geometrias curvas, o papel da reta é desempenhado por uma
-                <strong>geodésica</strong>, isto é, uma curva localmente de menor
-                comprimento. No plano euclidiano, a geodésica é a reta; na esfera,
-                são os círculos máximos.
-              </p>
-            </article>
-            <article class="card">
-              <h3>Curvatura</h3>
-              <p>
-                A diferença entre estas geometrias pode ser descrita por meio da
-                curvatura: nula no caso euclidiano, positiva no caso esférico e
-                negativa no caso hiperbólico.
-              </p>
-            </article>
+        <div class="visual-band">
+          <div class="mini-visual">
+            <svg viewBox="0 0 320 220" aria-hidden="true">
+              <circle cx="160" cy="110" r="82" class="diagram-sphere"></circle>
+              <path d="M 78 110 A 82 82 0 0 1 242 110" class="diagram-geo"></path>
+              <path d="M 160 28 A 82 82 0 1 1 159.9 28" class="diagram-geo secondary"></path>
+              <path d="M 160 28 L 234 110 L 86 110 Z" class="diagram-triangle"></path>
+            </svg>
+            <p>Na esfera, geodésicas e triângulos comportam-se de forma diferente do plano.</p>
+          </div>
+          <div class="mini-visual">
+            <svg viewBox="0 0 320 220" aria-hidden="true">
+              <circle cx="160" cy="110" r="82" class="diagram-disk"></circle>
+              <path d="M 95 160 A 135 135 0 0 1 225 160" class="diagram-geo"></path>
+              <path d="M 110 70 A 110 110 0 0 1 210 180" class="diagram-geo secondary"></path>
+              <path d="M 132 78 A 92 92 0 0 1 188 78" class="diagram-geo tertiary"></path>
+            </svg>
+            <p>No disco de Poincaré, as geodésicas aparecem como arcos ortogonais à fronteira.</p>
           </div>
         </div>
       </section>
 
-      <section class="panel" id="prova">
+      <section class="content-section reveal" id="tema">
+        <div class="section-head">
+          <p class="kicker">Conceito</p>
+          <h2>O que é a geometria não euclidiana</h2>
+        </div>
+
+        <div class="feature-layout">
+          <article class="card feature-card">
+            <p>
+              Chama-se <strong>geometria não euclidiana</strong> ao conjunto de
+              teorias geométricas obtidas quando se altera o postulado das
+              paralelas de Euclides. A ideia central é simples mas profunda:
+              modificar um axioma muda a estrutura do espaço.
+            </p>
+            <ul class="clean-list">
+              <li><strong>Esférica:</strong> curvatura positiva e ausência de paralelas.</li>
+              <li><strong>Euclidiana:</strong> curvatura nula e uma única paralela.</li>
+              <li><strong>Hiperbólica:</strong> curvatura negativa e infinitas paralelas.</li>
+            </ul>
+          </article>
+
+          <aside class="concept-panel">
+            <div class="concept-chip">Geodésica</div>
+            <div class="concept-chip">Curvatura</div>
+            <div class="concept-chip">Paralelismo</div>
+            <div class="concept-chip">Triângulos</div>
+            <div class="concept-chip">Modelos</div>
+            <div class="concept-chip">Variedades</div>
+          </aside>
+        </div>
+
+        <div class="grid grid-three">
+          <article class="card icon-card">
+            <div class="icon-wrap">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <line x1="18" y1="92" x2="102" y2="28" class="icon-line"></line>
+                <line x1="18" y1="28" x2="102" y2="92" class="icon-line faint"></line>
+              </svg>
+            </div>
+            <h3>Geodésicas</h3>
+            <p>
+              A reta clássica é substituída pela geodésica, isto é, pela curva de
+              menor comprimento local.
+            </p>
+          </article>
+
+          <article class="card icon-card">
+            <div class="icon-wrap">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <circle cx="60" cy="60" r="34" class="icon-circle"></circle>
+                <path d="M 26 60 H 94" class="icon-line"></path>
+              </svg>
+            </div>
+            <h3>Curvatura</h3>
+            <p>
+              O espaço pode ter curvatura nula, positiva ou negativa, e isso altera
+              distâncias, ângulos e paralelismo.
+            </p>
+          </article>
+
+          <article class="card icon-card">
+            <div class="icon-wrap">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <path d="M 24 86 Q 60 18 96 86" class="icon-line"></path>
+                <path d="M 24 86 Q 60 46 96 86" class="icon-line faint"></path>
+              </svg>
+            </div>
+            <h3>Modelos</h3>
+            <p>
+              Os modelos de Klein e de Poincaré permitem estudar a geometria
+              hiperbólica dentro do quadro euclidiano.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section reveal" id="prova">
         <div class="section-head">
           <p class="kicker">Rigor matemático</p>
-          <h2>Como se justifica a geometria não euclidiana</h2>
+          <h2>Prova, propriedades e elementos geométricos</h2>
         </div>
+
         <div class="grid grid-two">
           <article class="card">
             <h3>O ponto lógico essencial</h3>
             <p>
-              Hoje não se procura “provar” o quinto postulado a partir dos outros,
-              porque se sabe que isso não é possível no quadro axiomático habitual.
-              O ponto matemático decisivo foi mostrar que a sua negação conduz a
-              teorias <strong>consistentes em termos relativos</strong>.
+              Hoje não se procura provar o quinto postulado a partir dos outros,
+              porque se sabe que tal não é possível no enquadramento axiomático
+              habitual. O passo matemático decisivo foi mostrar que a sua negação
+              produz teorias coerentes em termos relativos.
             </p>
             <p>
-              Em linguagem simples: se a geometria euclidiana for consistente, então
-              também os modelos hiperbólicos construídos dentro dela o são.
+              Se a geometria euclidiana for consistente, então os modelos
+              hiperbólicos construídos dentro dela também o são.
             </p>
           </article>
 
           <article class="card">
-            <h3>Ideia de prova por modelos</h3>
+            <h3>Estratégia por modelos</h3>
             <ol class="steps">
-              <li>Escolhem-se axiomas comuns às geometrias clássicas.</li>
-              <li>Substitui-se apenas o postulado das paralelas.</li>
-              <li>Constrói-se um modelo euclidiano dessa nova teoria, por exemplo o disco de Poincaré ou o modelo de Klein.</li>
-              <li>Verifica-se que os axiomas da geometria hiperbólica se cumprem nesse modelo.</li>
-              <li>Conclui-se a consistência relativa da nova geometria.</li>
+              <li>Fixam-se axiomas comuns às geometrias clássicas.</li>
+              <li>Altera-se apenas o postulado das paralelas.</li>
+              <li>Constrói-se um modelo euclidiano dessa nova teoria.</li>
+              <li>Verifica-se que as propriedades exigidas se mantêm nesse modelo.</li>
+              <li>Conclui-se a consistência relativa da geometria não euclidiana.</li>
             </ol>
           </article>
         </div>
 
-        <div class="grid grid-three">
-          <article class="card">
-            <h3>Propriedade 1</h3>
-            <p>
-              <strong>Soma dos ângulos de um triângulo</strong><br>
-              Euclidiana: 180°<br>
-              Esférica: superior a 180°<br>
-              Hiperbólica: inferior a 180°
-            </p>
+        <div class="property-strip">
+          <article class="property-card">
+            <h3>Soma dos ângulos</h3>
+            <p>Euclidiana: 180°</p>
+            <p>Esférica: superior a 180°</p>
+            <p>Hiperbólica: inferior a 180°</p>
           </article>
-          <article class="card">
-            <h3>Propriedade 2</h3>
-            <p>
-              <strong>Paralelas</strong><br>
-              Euclidiana: uma única paralela<br>
-              Esférica: nenhuma paralela<br>
-              Hiperbólica: infinitas paralelas
-            </p>
+          <article class="property-card">
+            <h3>Paralelas</h3>
+            <p>Euclidiana: uma única</p>
+            <p>Esférica: nenhuma</p>
+            <p>Hiperbólica: infinitas</p>
           </article>
-          <article class="card">
-            <h3>Propriedade 3</h3>
+          <article class="property-card">
+            <h3>Escala geométrica</h3>
             <p>
-              <strong>Semelhança e escala</strong><br>
-              Em geometria hiperbólica, a relação entre áreas, ângulos e distâncias
-              depende da curvatura do espaço, o que altera a intuição clássica sobre
-              triângulos e figuras semelhantes.
+              As relações entre comprimento, área e ângulos passam a depender da
+              curvatura do espaço.
             </p>
           </article>
         </div>
 
-        <article class="card wide">
-          <h3>Elementos geométricos relevantes</h3>
-          <p>
-            Para estudar estas geometrias usam-se pontos, geodésicas, triângulos,
-            ângulos, curvatura e modelos. Na esfera, um triângulo formado por
-            meridianos e pelo equador pode ter três ângulos retos; no disco de
-            Poincaré, as geodésicas aparecem como arcos ortogonais à fronteira do
-            disco.
-          </p>
-        </article>
+        <div class="grid grid-two">
+          <article class="card">
+            <h3>Elementos geométricos relevantes</h3>
+            <p>
+              O estudo destas geometrias usa pontos, geodésicas, triângulos,
+              ângulos, curvatura e modelos. Um triângulo esférico formado por dois
+              meridianos e pelo equador pode ter três ângulos retos, algo impossível
+              no plano euclidiano.
+            </p>
+          </article>
+
+          <article class="card visual-card">
+            <svg viewBox="0 0 360 240" aria-hidden="true">
+              <rect x="24" y="24" width="312" height="192" rx="24" class="proof-frame"></rect>
+              <circle cx="180" cy="120" r="76" class="proof-disk"></circle>
+              <path d="M 110 154 A 120 120 0 0 1 250 154" class="proof-curve"></path>
+              <path d="M 122 84 A 92 92 0 0 1 238 178" class="proof-curve secondary"></path>
+              <path d="M 180 44 A 76 76 0 0 1 250 154 A 76 76 0 0 1 110 154 A 76 76 0 0 1 180 44" class="proof-triangle"></path>
+            </svg>
+            <p>
+              Diagramas deste tipo ajudam a ver como uma mesma noção, como a de
+              “reta”, assume formas diferentes em espaços com curvatura.
+            </p>
+          </article>
+        </div>
       </section>
 
-      <section class="panel" id="aplicacoes">
+      <section class="content-section reveal" id="aplicacoes">
         <div class="section-head">
           <p class="kicker">Matemática aplicada</p>
           <h2>Onde estas geometrias aparecem na prática</h2>
         </div>
+
         <div class="grid grid-three">
           <article class="card">
             <h3>Navegação e geodesia</h3>
             <p>
               À escala da Terra, trajetórias mínimas aproximam-se por arcos de
-              círculos máximos. Por isso, a geometria esférica é importante em
-              cartografia, rotas aéreas e geodesia.
+              círculos máximos. A geometria esférica é por isso essencial em
+              cartografia, aviação e geodesia.
             </p>
           </article>
           <article class="card">
             <h3>Relatividade geral</h3>
             <p>
-              A formulação geométrica da gravitação em Einstein depende de espaços
-              curvos descritos por geometria riemanniana e pseudo-riemanniana.
+              A gravitação em Einstein é descrita em termos geométricos por espaços
+              curvos, onde a geometria riemanniana e pseudo-riemanniana desempenha
+              um papel central.
             </p>
           </article>
           <article class="card">
-            <h3>Modelação e otimização</h3>
+            <h3>Modelação contemporânea</h3>
             <p>
-              Estruturas com geometria não euclidiana surgem em problemas de
-              otimização em variedades, visão computacional, tratamento de dados em
-              espaços curvos e análise geométrica.
+              Dados, otimização em variedades, visão computacional e análise
+              geométrica usam frequentemente estruturas não euclidianas.
             </p>
           </article>
         </div>
+
+        <div class="application-banner">
+          <div class="banner-text">
+            <p class="meta">Leitura aplicada</p>
+            <h3>Da superfície terrestre ao espaço-tempo</h3>
+            <p>
+              O valor destas geometrias está em descrever melhor espaços reais,
+              superfícies curvas e contextos em que o plano clássico deixa de ser
+              suficiente.
+            </p>
+          </div>
+          <svg viewBox="0 0 420 220" aria-hidden="true">
+            <path d="M 30 172 C 100 100 170 244 240 172 C 310 100 340 180 390 120" class="banner-wave"></path>
+            <path d="M 40 122 Q 120 42 200 122 T 360 122" class="banner-wave secondary"></path>
+            <circle cx="104" cy="126" r="12" class="banner-node"></circle>
+            <circle cx="240" cy="172" r="12" class="banner-node"></circle>
+            <circle cx="350" cy="123" r="12" class="banner-node"></circle>
+          </svg>
+        </div>
       </section>
 
-      <section class="panel" id="exercicio">
+      <section class="content-section reveal" id="exercicio">
         <div class="section-head">
           <p class="kicker">Exploração ativa</p>
           <h2>Simulador de triângulos geodésicos</h2>
@@ -337,11 +454,12 @@
         </article>
       </section>
 
-      <section class="panel" id="bibliografia">
+      <section class="content-section reveal" id="bibliografia">
         <div class="section-head">
           <p class="kicker">Referências</p>
           <h2>Bibliografia para aprofundamento</h2>
         </div>
+
         <div class="grid grid-two">
           <article class="card">
             <h3>Fontes históricas e institucionais</h3>
@@ -354,6 +472,7 @@
               <li>Encyclopaedia Britannica. <em>Eugenio Beltrami</em>.</li>
             </ol>
           </article>
+
           <article class="card">
             <h3>Livros recomendados</h3>
             <ol class="refs">
@@ -362,6 +481,7 @@
               <li>Coxeter, H. S. M. <em>Introduction to Geometry</em>.</li>
               <li>do Carmo, M. <em>Geometria Diferencial de Curvas e Superfícies</em>.</li>
             </ol>
+
             <div class="links-box">
               <h4>Ligações úteis</h4>
               <ul class="clean-list">

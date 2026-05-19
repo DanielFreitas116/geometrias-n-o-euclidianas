@@ -1,5 +1,6 @@
-const tabs = document.querySelectorAll(".tab");
-const panels = document.querySelectorAll(".panel");
+const navLinks = document.querySelectorAll(".nav-link");
+const sections = document.querySelectorAll(".content-section");
+const revealSections = document.querySelectorAll(".reveal");
 
 const geometrySelect = document.querySelector("#geometrySelect");
 const areaRange = document.querySelector("#areaRange");
@@ -15,17 +16,42 @@ const parallelOne = document.querySelector("#parallelOne");
 const parallelTwo = document.querySelector("#parallelTwo");
 const trianglePath = document.querySelector("#trianglePath");
 
-tabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    const target = tab.dataset.tab;
-
-    tabs.forEach((item) => item.classList.remove("active"));
-    panels.forEach((panel) => panel.classList.remove("active"));
-
-    tab.classList.add("active");
-    document.querySelector(`#${target}`).classList.add("active");
+function activateNav(id) {
+  navLinks.forEach((link) => {
+    link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
   });
-});
+}
+
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    const visibleEntry = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+    if (visibleEntry) {
+      activateNav(visibleEntry.target.id);
+    }
+  },
+  {
+    threshold: [0.2, 0.45, 0.7],
+    rootMargin: "-15% 0px -45% 0px",
+  }
+);
+
+sections.forEach((section) => sectionObserver.observe(section));
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  },
+  { threshold: 0.14 }
+);
+
+revealSections.forEach((section) => revealObserver.observe(section));
 
 function setEuclideanDiagram() {
   diskBoundary.classList.add("hidden");
